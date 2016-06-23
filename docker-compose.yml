@@ -1,0 +1,17 @@
+base: 
+  image: baseservice 
+  links: 
+    - db 
+    - eureka 
+eureka: 
+   image: eurekaserver 
+   ports: 
+     - "8010:8010"
+db: 
+   image: mysql:5.7
+   volumes: 
+    - /home/vagrant/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+   ports: 
+     - "3306:3306"
+   environment: 
+     MYSQL_ROOT_PASSWORD: password
