@@ -1,9 +1,11 @@
 base: 
+  #build: ./apiserver
   image: baseservice 
   links: 
     - db 
     - eureka 
 eureka: 
+   #build: ./eurekaserver
    image: eurekaserver 
    ports: 
      - "8010:8010"
