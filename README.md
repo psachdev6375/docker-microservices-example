@@ -1,6 +1,6 @@
 # docker-microservices-example
 
-Uses docker-compose to set up 3 containrs: 
+Uses docker-compose to set up 3 containers: 
 
 1. DB server using mysql:5.7 image. Uses docker-entrypoint-initdb.d to create database and load initial data in it. 
 
