@@ -1,6 +1,6 @@
 base: 
   #build: ./apiserver
-  image: baseservice 
+  image: apiserver 
   links: 
     - db 
     - eureka 
