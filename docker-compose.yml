@@ -1,16 +1,14 @@
 base: 
-  #build: ./apiserver
-  image: apiserver 
+  build: ./apiserver
   links: 
     - db 
     - eureka 
 eureka: 
-   #build: ./eurekaserver
-   image: eurekaserver 
+   build: ./eurekaserver
    ports: 
      - "8010:8010"
-db: 
-   image: mysql:5.7
+db:
+   build: ./dbserver 
    volumes: 
     - /home/vagrant/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
    ports: 

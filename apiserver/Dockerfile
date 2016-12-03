@@ -17,7 +17,7 @@ RUN \
 # Define JAVA_HOME variable 
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
-# Copy base service Application 
+# Copy Eureka Application 
 ADD BaseService-Demo.jar BaseService-Demo.jar
 
 # Touch the jar file 
@@ -26,6 +26,6 @@ RUN bash -c 'touch /BaseService-Demo.jar'
 # Expose 8010 port 
 #EXPOSE 8010
 
-# Run base service server 
+# Run eureka server 
 CMD java -jar BaseService-Demo.jar --mysql.ip=${DB_PORT_3306_TCP_ADDR} --mysql.port=${DB_PORT_3306_TCP_PORT} --mysql.rootuser=root --mysql.rootpassword=${DB_ENV_MYSQL_ROOT_PASSWORD} --eureka.ip=${EUREKA_PORT_8010_TCP_ADDR}
 
