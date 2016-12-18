@@ -1,0 +1,36 @@
+base: 
+  build: ./apiserver
+  log_driver: syslog
+  log_opt: 
+    syslog-address: "tcp://172.17.0.2:514"
+  links: 
+    - db 
+    - eureka 
+    - rsyslog
+eureka: 
+   build: ./eurekaserver
+   ports: 
+     - "8010:8010"
+   log_driver: syslog 
+   log_opt: 
+    syslog-address: "tcp://172.17.0.2:514"
+   links: 
+    - rsyslog
+db:
+   build: ./dbserver 
+   volumes: 
+    - /home/vagrant/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+   ports: 
+     - "3306:3306"
+   log_driver: syslog
+   log_opt: 
+    syslog-address: "tcp://172.17.0.2:514"
+   environment: 
+     MYSQL_ROOT_PASSWORD: password
+   links: 
+    - rsyslog
+rsyslog: 
+   build: ./rsyslog
+   ports: 
+     - "514:514"
+     - "514:514/udp"
