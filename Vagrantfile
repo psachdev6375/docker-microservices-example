@@ -6,6 +6,6 @@ Vagrant.configure(2) do |config|
       dockerv.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       dockerv.memory = 4096
     end
-    #docker.vm.hostname = "docker.puneet.com"
+    docker.vm.hostname = "docker.puneet.com"
   end
 end
